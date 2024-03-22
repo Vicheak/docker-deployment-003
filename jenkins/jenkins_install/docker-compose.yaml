@@ -3,6 +3,7 @@ version: '3'
 services: 
   jenkins: 
     container_name: jenkins
+    image: jenkins_install_jenkins:latest
     build:
       context: . 
       dockerfile: Dockerfile
@@ -10,7 +11,7 @@ services:
     privileged: true
     ports: 
       - "5003:8080"
-      - "5004:50000"
+      - "50000:50000"
       # this port 50000 is for the agent communication (worker)
     volumes : 
       - jenkins_home:/var/jenkins_home
