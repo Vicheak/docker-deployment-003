@@ -12,11 +12,11 @@ services:
         gitlab_rails['gitlab_shell_ssh_port'] = 2224
         # Add any other gitlab.rb configuration here, each on its own line
     ports:
-      - '80:80'
-      - '443:443'
+      - '2100:80'
+      - '2101:443'
       - '2225:22'
     volumes:
-      - '$GITLAB_HOME/config:/etc/gitlab'
-      - '$GITLAB_HOME/logs:/var/log/gitlab'
-      - '$GITLAB_HOME/data:/var/opt/gitlab'
+      - '/etc/gitlab/config:/etc/gitlab'
+      - '/etc/gitlab/logs:/var/log/gitlab'
+      - '/etc/gitlab/data:/var/opt/gitlab'
     shm_size: '256m'
