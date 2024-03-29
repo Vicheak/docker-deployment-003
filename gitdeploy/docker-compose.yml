@@ -1,22 +1,22 @@
-version: '3.8'
+version: '3.6'
 
 services:
   gitdeploy:
     image: 'gitlab/gitlab-ee:latest'
-    container_name: gitlab-app
+    container_name: gitlab
     restart: always
-    hostname: 'gitlab.begoingdev.me'
+    hostname: 'gitme.vicheakautomate.online'
     environment:
       GITLAB_OMNIBUS_CONFIG: |    
-        external_url 'https://gitlab.begoingdev.me'
+        external_url 'https://gitme.vicheakautomate.online'
         gitlab_rails['gitlab_shell_ssh_port'] = 2224
         # Add any other gitlab.rb configuration here, each on its own line
     ports:
-      - '2100:80'
-      - '2101:443'
-      - '2225:22'
+      - '80:80'
+      - '443:443'
+      - '2224:2224'
     volumes:
-      - '/etc/gitlab/config:/etc/gitlab'
-      - '/etc/gitlab/logs:/var/log/gitlab'
-      - '/etc/gitlab/data:/var/opt/gitlab'
+      - '$GITLAB_HOME/config:/etc/gitlab'
+      - '$GITLAB_HOME/logs:/var/log/gitlab'
+      - '$GITLAB_HOME/data:/var/opt/gitlab'
     shm_size: '256m'
