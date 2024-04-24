@@ -1,0 +1,11 @@
+[Unit]
+Description=Jenkins Agent Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/java -jar /home/vicheak/jenkins-job/agent.jar -url http://34.143.222.76:5003/ -secret cb9e0ba8ea38b6a88b7f47123cb30711c8e8c47ef8b3066c01da3976af9bf35e -name worker1 -workDir "/home/vicheak/jenkins-job"
+Restart=always
+
+[Install]
+WantedBy=multi-user.target # restart on startup boot
